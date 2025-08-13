@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elamaran S - Portfolio</title>
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: #121212 !important;
+      color: #e0e0e0;
+    }
+    .hero {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      padding: 10px 0;
+    }
+    .section-title {
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      width: 60px;
+      height: 3px;
+      background: #0d6efd;
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+    }
+    .card {
+      border: none;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .skill-badge {
+      background-color: #e3f2fd;
+      color: #0d6efd;
+      margin: 5px;
+      cursor: default;
+    }
+    footer {
+      background-color: #2c5364;
+      color: white;
+      padding: 20px 0;
+    }
+    .dark-mode footer {
+      background-color: #1f1f1f;
+    }
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      z-index: 1000;
+    }
+    .edu-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.edu-card {
+  background-color: #1e1e1e;
+  position: relative;
+  padding: 20px 30px;
+  border-radius: 12px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.edu-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -50px;
+  width: 100px;
+  height: 100%;
+  background-color: #2b2b2b;
+  transform: skewX(-40deg);
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.edu-content {
+  position: relative;
+  z-index: 1;
+}
+
+.edu-institute {
+  font-weight: 600;
+  color: #9ab;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.edu-date i {
+  margin-right: 5px;
+  color: #0d6efd;
+}
+
+.edu-degree {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.edu-detail {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+    /* Tech Stack Styles */
+    .tech-card {
+      background-color: #1f1f1f;
+      padding: 20px;
+      border-radius: 12px;
+      transition: transform 0.2s ease, box-shadow 0.3s;
+    }
+    .tech-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    .tech-icon {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
+    .tech-label {
+      color: white;
+      font-weight: 500;
+    }
+    .dark-mode .tech-card {
+      background-color: #2b2b2b;
+    }
+    .invert {
+      filter: invert(1);
+    }
+
+    .project-card {
+  background-color: #1e1e1e;         /* Dark card */
+  border: 1px solid #2a2a2a;         /* Border with a subtle tone */
+  border-radius: 12px;
+  padding: 20px;
+  color: #f1f1f1;                    /* Light text */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  border-color: #0d6efd;            /* Accent border on hover */
+}
+
+.project-card h5 {
+  color: #0d6efd;                    /* Title/icon accent color */
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  color: #ccc;                       /* Muted paragraph color */
+  font-size: 0.95rem;
+}
+
+
+.dark-input {
+    background-color: #111;   /* black background */
+    color: #fff;              /* white text */
+    border: 1px solid #333;   /* dark border */
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .dark-input::placeholder {
+    color: #aaa; /* gray placeholder text */
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 25px;
+    font-weight: bold;
+    border: none;
+    transition: 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .form-control:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+form .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.dark-input {
+  background-color: #111;    /* black background */
+  color: #fff;               /* white text */
+  border: 1px solid #333;    /* dark border */
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.dark-input::placeholder {
+  color: #aaa;               /* gray placeholder */
+}
+
+.dark-input:focus {
+  background-color: #111;    /* KEEP it black on focus */
+  color: #fff;
+  border: 1px solid #555;    /* slightly brighter border */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3); /* optional blue glow */
+  outline: none;
+}
+
+ html {
+    scroll-behavior: smooth;
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #111;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 1000;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links li a:hover {
+    color: #00ffff;
+  }
+
+  .menu-icon {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  #menu-toggle:checked + .menu-icon + .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 2rem;
+    background: #111;
+    width: 200px;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .menu-icon {
+      display: block;
+    }
+  }
+
+  body {
+    padding-top: 70px; /* Keeps content from being hidden */
+  }
+</style>
+
+<nav class="navbar">
+  <div class="logo">ELAMARAN S</div>
+  <input type="checkbox" id="menu-toggle" hidden />
+  <label for="menu-toggle" class="menu-icon"><i class="fas fa-bars"></i></label>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+</head>
+<body>
+  
+  <!-- Scroll to Top Button -->
+  <button onclick="scrollToTop()" id="scrollTopBtn" class="btn btn-primary rounded-circle">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+ <section class="hero hero-fixed text-center">
+  <div class="container animate__animated animate__fadeInDown">
+    <div class="row align-items-center">
+      <div class="col-md-4 mb-4 mb-md-0">
+        <img src="https://cdn-icons-png.flaticon.com/512/706/706797.png" alt="Avatar"
+          class="img-fluid rounded-circle animate__animated animate__pulse animate__infinite"
+          style="max-width: 180px;">
+      </div>
+      <div class="col-md-8">
+        <h1 class="display-4 fw-bold animate__animated animate__fadeInDown">Elamaran S</h1>
+        <p class="lead animate__animated animate__fadeInUp" id="typing"></p>
+        <a href="https://www.linkedin.com/in/elamaran-sivakumar-b2828b23b" class="btn btn-light mt-3" target="_blank">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://drive.google.com/file/d/13_xSMQEGFFARqI-yIWTnnMQYe6hnTEbT/view?usp=sharing" class="btn btn-outline-light mt-3 ms-2" download>
+          <i class="bi bi-download"></i> Download Resume
+        </a>
+        <button class="btn btn-warning mt-3 ms-2" onclick="toggleDarkMode()">
+          <i class="bi bi-moon"></i> Toggle Dark Mode
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Profile Summary -->
+  <section id="about" class="section"></section>
+  <section class="container my-5 animate__animated animate__fadeInUp">
+    <h2 class="section-title"><i class="bi bi-person-circle"></i> About Me </h2>
+    <p>
+      Enthusiastic and highly motivated BE graduate with a passion for technology and a strong foundation in computer science. My academic background, coupled with practical experience, has equipped me with a comprehensive understanding of software development, database management, and system analysis.
+      My goal is to contribute meaningfully to innovative projects while continuously evolving as a software professional in a dynamic work environment.
+      
+    </p>
+  </section>
+
+<!-- Tech Stack Section -->
+<section id="skills" class="section"></section>
+<section class="container my-5 animate__animated animate__fadeInUp">
+  <h2 class="section-title"><i class="bi bi-layers"></i> My Skills </h2>
+  <div class="row g-4">
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+      <div class="tech-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="tech-icon">
+        <p class="tech-label">HTML</p>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+      <div class="tech-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" class="tech-icon">
+        <p class="tech-label">CSS</p>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+      <div class="tech-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="tech-icon">
+        <p class="tech-label">Python</p>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+      <div class="tech-card">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/class.png" alt="OOPs" class="tech-icon invert">
+        <p class="tech-label">OOPs</p>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+      <div class="tech-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" class="tech-icon invert">
+        <p class="tech-label">Django</p>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+      <div class="tech-card">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/database.png" alt="ORM" class="tech-icon invert">
+        <p class="tech-label">ORM</p>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+      <div class="tech-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="tech-icon">
+        <p class="tech-label">MySQL</p>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+      <div class="tech-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="tech-icon">
+        <p class="tech-label">Git</p>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+      <div class="tech-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="tech-icon invert">
+        <p class="tech-label">GitHub</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Education Section -->
+<!-- Education Section -->
+<section class="container my-5 animate__animated animate__fadeInUp">
+  <h2 class="section-title"><i class="bi bi-mortarboard"></i> Education</h2>
+  <div class="edu-timeline">
+
+    <div class="edu-card">
+      <div class="edu-content">
+        <h6 class="edu-institute">
+          <i class="bi bi-building"></i> Kings College of Engineering  Pudukkottai Thanjavur
+          <span class="edu-date"><i class="bi bi-calendar3"></i> 2020–2024</span>
+        </h6>
+        <h5 class="edu-degree"><i class="bi bi-journal-code"></i> Bachelor in Computer Science</h5>
+        <p class="edu-detail"><i class="bi bi-graph-up-arrow"></i> CGPA: 78%</p>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-content">
+        <h6 class="edu-institute">
+          <i class="bi bi-building"></i> Govt higher Secondary School Pinnaiyur Orathandu 
+          <span class="edu-date"><i class="bi bi-calendar3"></i> 2018–2020</span>
+        </h6>
+        <h5 class="edu-degree">
+          <i class="bi bi-journal-code"></i> HSC – Computer Science
+        </h5>
+        <p class="edu-detail"><i class="bi bi-graph-up-arrow"></i> Percentage: 66%</p>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-content">
+        <h6 class="edu-institute">
+          <i class="bi bi-building"></i> Govt higher Secondary School Pinnaiyur Orathanadu
+          <span class="edu-date"><i class="bi bi-calendar3"></i> 2017–2018</span>
+        </h6>
+        <h5 class="edu-degree"><i class="bi bi-journal-code"></i> SSLC</h5>
+        <p class="edu-detail"><i class="bi bi-graph-up-arrow"></i> Percentage: 70%</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Certifications -->
+<section class="container my-5 animate__animated animate__fadeInUp">
+  <h2 class="section-title"><i class="bi bi-award"></i> Certifications</h2>
+  <div class="row g-4">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="cert-card">
+        <i class="bi bi-patch-check-fill cert-icon text-primary"></i>
+        <h6 class="cert-title">IBM Certified Python Developer</h6>
+        <p class="cert-source">Issued by IBM</p>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="cert-card">
+        <i class="bi bi-patch-check-fill cert-icon text-primary"></i>
+        <h6 class="cert-title">SQL</h6>
+        <p class="cert-source">Great Learning</p>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="cert-card">
+        <i class="bi bi-patch-check-fill cert-icon text-primary"></i>
+        <h6 class="cert-title">Django Framework</h6>
+        <p class="cert-source">Udemy</p>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="cert-card">
+        <i class="bi bi-patch-check-fill cert-icon text-primary"></i>
+        <h6 class="cert-title">Python OOPs</h6>
+        <p class="cert-source">CodeChef</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+ <!-- Projects -->
+<section id="projects" class="section"></section>
+<section class="container my-5 animate__animated animate__fadeInUp">
+  <h2 class="section-title"><i class="bi bi-kanban-fill"></i> Projects</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="project-card h-100">
+        <h5><i class="bi bi-bar-chart-line"></i> Expense Tracker</h5>
+        <p>Designed and developed a user-friendly expense tracker with features for adding, categorizing, and visualizing expenses using dynamic charts and graphs. Focused on a robust backend with real-time data updates.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="project-card h-100">
+        <h5><i class="bi bi-calendar-event"></i> Event Management System</h5>
+        <p>Developed an event management system using Python Tkinter with functionalities for scheduling, registration, and data management. Employed OOP principles for modular, maintainable code.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="project-card h-100">
+        <h5><i class="bi bi-list-check"></i> Django Todo App (CRUD)</h5>
+        <p>Built a full-stack web app using Django with user authentication and complete CRUD functionality. Used class-based views, forms, URL routing, and best practices in database design.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section"></section>
+<section class="container my-5 animate__animated animate__fadeInUp">
+  <h2 class="section-title"><i class="bi bi-envelope-fill"></i> Send me a message</h2>
+  <form action="https://formspree.io/f/xjkokqpz" method="POST">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <input type="text" name="name" class="form-control dark-input" placeholder="Your Name" required>
+      </div>
+      <div class="col-md-6">
+        <input type="email" name="email" class="form-control dark-input" placeholder="Your Email" required>
+      </div>
+      <div class="col-md-6">
+        <input type="text" name="subject" class="form-control dark-input" placeholder="Subject" required>
+      </div>
+      <div class="col-md-6">
+        <input type="text" name="phone" class="form-control dark-input" placeholder="Phone">
+      </div>
+      <div class="col-12">
+        <textarea name="message" rows="5" class="form-control dark-input" placeholder="Message" required></textarea>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </div>
+    </div>
+  </form>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <p>© 2025 Elamaran S. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = function () {
+      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+    }
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+
+    const text = "Software Developer | Python Enthusiast | Full Stack Learner";
+    let i = 0;
+    function typeEffect() {
+      if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 80);
+      }
+    }
+    typeEffect();
+
+    
+  </script>
+</body>
+</html>
